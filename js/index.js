@@ -7,7 +7,9 @@
 // 	* [ x ] `mouseleave`
 //  * [ x ] `click`
 // 	* [ x ] `resize`
-// 	* [ ] `dblclick`
+// 	* [ x ] `mousedown`
+// 	* [ x ] `wheel`
+// 	* [ x ] `dblclick`
 // 	* [ ] `select`
 // 	* [ ] `focus`
 // 	* [ ] `blur`
@@ -15,7 +17,7 @@
 
 
 // 	* [ ] `keydown`
-// 	* [ ] `wheel`
+
 // 	* [ ] `drag / drop`
 // 	* [ ] `load`
 
@@ -30,13 +32,21 @@
 
 // =============================
 // resize
+
 const logo = document.querySelector("header h1");
 console.log(logo);
+const header = document.querySelector("header");
+console.log(header);
 
-window.addEventListener("resize", e=>{
+window.addEventListener("resize", e =>{
+    header.style.backgroundColor = "#00FF";
+});
+window.addEventListener("resize", e =>{
     logo.textContent = "FUN BUS !!!!!!!!"
     logo.style.backgroundColor = "#00FFFF";
 });
+
+
 
 ///==================
 //click
@@ -51,10 +61,13 @@ links.forEach(item =>{
         item.style.fontWeight = '900';
     })
 })
-//==============
-//
-const funBus = document.querySelector(".intro img");
-console.log(funBus);
+
+//ondblclick
+const firstLink = document.querySelector(".nav-link");
+console.log(firstLink);
+firstLink.ondblclick = function(){
+    firstLink.style.backgroundColor = "#663399";
+}
 
 
 //=============================
@@ -79,6 +92,7 @@ bigBoat.addEventListener('mouseenter', e =>{
     bigBoat.style.transition = 'transform 1s';
 });
 
+//=====================
 //mouseleave
 bigBoat.addEventListener('mouseleave', e =>{
     console.log("in mouseenter fx")
@@ -88,28 +102,51 @@ bigBoat.addEventListener('mouseleave', e =>{
 
 
 //=================
-const button1 = document.querySelectorAll(".btn")[0];
+//on mousedown
 const button2 = document.querySelectorAll(".btn")[1];
-const button3 = document.querySelectorAll(".btn")[2];
-console.log(button1);
+button2.onmousedown = function(){
+    button2.style.backgroundColor = "#00FFFF";
+ }
 
-button1.ondblclick = function(){
-    button1.style.backgroundColor = "#00FFFF";;
+//=================
+//onmouseup
+const button3 = document.querySelectorAll(".btn")[2];
+console.log(button3);
+
+button3.onmouseup = function(){
+    button3.style.border = "6px solid #565697";
 };
 
-button2.
-
-
-
-
-
-
-
-
-
-
-
 //===============
+//onwheel
 const footer = document.querySelector("footer");
 console.log(footer);
+
+   footer.onwheel = function(){
+    footer.style.backgroundColor = "#663399";
+}
+
+//=====================
+//onblur and onfocus
+const input = document.createElement('input');
+input.textContent = "type something";
+footer.prepend(input);
+
+input.onfocus = function(){
+    input.value = "focusing here";
+    input.style.backgroundColor = "dodgerblue";
+    input.style.color = "white";
+}
+input.onblur = function(){
+    input.value = "focusing away";
+    input.style.backgroundColor = "red";
+    input.style.color = "white";
+}
+
+
+
+
+
+
+
 
