@@ -10,10 +10,8 @@
 // 	* [ x ] `mousedown`
 // 	* [ x ] `wheel`
 // 	* [ x ] `dblclick`
-// 	* [ ] `select`
-// 	* [ ] `focus`
-// 	* [ ] `blur`
-// 	* [ ] `scroll`
+// 	* [ x ] `focus`
+// 	* [ x ] `blur`
 
 
 // 	* [ ] `keydown`
@@ -39,14 +37,9 @@ const header = document.querySelector("header");
 console.log(header);
 
 window.addEventListener("resize", e =>{
-    header.style.backgroundColor = "#00FF";
-});
-window.addEventListener("resize", e =>{
     logo.textContent = "FUN BUS !!!!!!!!"
     logo.style.backgroundColor = "#00FFFF";
 });
-
-
 
 ///==================
 //click
@@ -55,19 +48,32 @@ console.log(links);
 
 links.forEach(item =>{
     item.addEventListener('click', event =>{
-        console.log("link has been clicked");
+        //console.log("link has been clicked");
         item.style.color = '#FF8C00';
         item.style.fontStyle = 'italic';
         item.style.fontWeight = '900';
+        //event.preventDefault();
     })
 })
 
-//ondblclick
+
+//double click
 const firstLink = document.querySelector(".nav-link");
 console.log(firstLink);
 firstLink.ondblclick = function(){
     firstLink.style.backgroundColor = "#663399";
 }
+
+//preventing propagation
+header.onclick = function(){
+    header.style.backgroundColor = "#00ff";
+}
+firstLink.onclick = function(event){
+    header.style.backgroundColor = "#c71585";
+    event.stopPropagation();
+}
+
+
 
 
 //=============================
@@ -107,6 +113,7 @@ const button2 = document.querySelectorAll(".btn")[1];
 button2.onmousedown = function(){
     button2.style.backgroundColor = "#00FFFF";
  }
+ 
 
 //=================
 //onmouseup
